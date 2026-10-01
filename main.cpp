@@ -160,8 +160,41 @@ int main() {
         cout << " [NOTICE] Invalid promo code. Continuing without discount.\n";
     }
 
-    cout << " Discount: -RM" << discount << "\n";
-    cout << " Total after discount: RM" << subtotal - discount << "\n";
+    // Calculate shipping fee
+    double shippingFee = (subtotal >= 40.0) ? 0.0 : 5.00;
+
+    // Calculate SST after discount
+    double discountedSubtotal = subtotal - discount;
+    double tax = discountedSubtotal * 0.06;
+
+    // Calculate final total
+    double total = discountedSubtotal + tax + shippingFee;
+
+    // ORDER SUMMARY
+    cout << "\n";
+    cout << "==================================================\n";
+    cout << "                  ORDER SUMMARY                   \n";
+    cout << "==================================================\n";
+    cout << " Item Name    : " << itemName << "\n";
+    cout << " Unit Price   : RM" << price << "\n";
+    cout << " Quantity     : " << quantity << "\n";
+    cout << "--------------------------------------------------\n";
+    cout << " Subtotal     : RM" << subtotal << "\n";
+    cout << " Discount     : -RM" << discount << "\n";
+
+    if (shippingFee == 0.0) {
+        cout << " Shipping Fee : RM0.00 (Free Tier)\n";
+    } else {
+        cout << " Shipping Fee : RM" << shippingFee << "\n";
+    }
+
+    cout << " SST (6%)     : +RM" << tax << "\n";
+    cout << "--------------------------------------------------\n";
+    cout << " Final Total  : RM" << total << "\n";
+    cout << "==================================================\n";
+    cout << " STATUS: TRANSACTION COMPLETED SUCCESSFULLY       \n";
+    cout << " THANK YOU FOR SHOPPING WITH TIKTOK SHOP!         \n";
+    cout << "==================================================\n";
 
     return 0;
 }
