@@ -139,5 +139,29 @@ int main() {
 
     cout << "\n Quantity selected: " << quantity << "\n";
 
+    // Calculate subtotal
+    double subtotal = price * quantity;
+    double discount = 0.0;
+
+    cout << "\n Subtotal: RM" << subtotal << "\n";
+
+    // Promo code
+    cout << " Enter promo code (type NONE if none): ";
+    cin >> promo;
+
+    if (promo == "TIKTOK10") {
+        discount = subtotal * 0.10;
+        cout << " [SUCCESS] Promo code applied: 10% off.\n";
+    }
+    else if (promo == "NONE") {
+        cout << " [NOTICE] No promo code applied.\n";
+    }
+    else {
+        cout << " [NOTICE] Invalid promo code. Continuing without discount.\n";
+    }
+
+    cout << " Discount: -RM" << discount << "\n";
+    cout << " Total after discount: RM" << subtotal - discount << "\n";
+
     return 0;
 }
