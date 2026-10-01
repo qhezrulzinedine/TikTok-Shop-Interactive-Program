@@ -9,6 +9,7 @@ int main() {
     int category = 0;
     int product = 0;
     int quantity = 0;
+    int rating = 0;
     string promo;
     string itemName = "";
     double price = 0.0;
@@ -196,5 +197,42 @@ int main() {
     cout << " THANK YOU FOR SHOPPING WITH TIKTOK SHOP!         \n";
     cout << "==================================================\n";
 
+    // RATING SYSTEM
+    while (true) {
+        cout << "\n Rate your purchase experience (1 to 5 Stars): ";
+        cin >> rating;
+
+        if (cin.fail() || rating < 1 || rating > 5) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << " [ERROR] Invalid rating! Please enter a star rating between 1 and 5.\n";
+        } else {
+            break;
+        }
+    }
+
+    cout << "--------------------------------------------------\n";
+
+    switch (rating) {
+        case 5:
+            cout << " [SELLER NOTIFICATION]: 5-Star Rating Received [*****]\n";
+            cout << " Feedback recorded. Thank you for your support!\n";
+            break;
+
+        case 4:
+            cout << " [SELLER NOTIFICATION]: 4-Star Rating Received [****]\n";
+            cout << " Feedback recorded. Thank you!\n";
+            break;
+
+        case 1:
+        case 2:
+        case 3:
+            cout << " [SELLER NOTIFICATION]: Low Rating Logged (" << rating << " Stars).\n";
+            cout << " Feedback recorded. Sorry for any inconvenience.\n";
+            cout << " We will improve our service. Thank you!\n";
+            break;
+    }
+
     return 0;
+
 }
