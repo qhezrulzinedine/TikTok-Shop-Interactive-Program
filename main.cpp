@@ -42,15 +42,14 @@ int main() {
         }
     }
 
-    // PRODUCT CATALOGUE
+    // PRODUCT CATALOG INTERFACE
     cout << "\n";
     cout << "==================================================\n";
     cout << "               CATALOG PRODUCT LIST               \n";
     cout << "==================================================\n";
 
     switch (category) {
-
-        case 1: // Tech
+        case 1:
             cout << " ID | Item Description           | Price    \n";
             cout << "----|----------------------------|----------\n";
             cout << " 1  | Mechanical Keyboard        | RM45.50  \n";
@@ -59,44 +58,9 @@ int main() {
             cout << " 4  | Desktop Phone Stand        | RM18.50  \n";
             cout << " 5  | 10,000mAh Power Bank       | RM55.00  \n";
             cout << "==================================================\n";
-
-            while (true) {
-                cout << " Enter product ID to buy (1-5): ";
-                cin >> product;
-
-                if (cin.fail() || product < 1 || product > 5) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << " [ERROR] Invalid product ID. Please select a valid ID (1-5).\n";
-                } else {
-                    break;
-                }
-            }
-
-            if (product == 1) {
-                itemName = "Mechanical Keyboard";
-                price = 45.50;
-            }
-            else if (product == 2) {
-                itemName = "Wireless Earbuds";
-                price = 29.00;
-            }
-            else if (product == 3) {
-                itemName = "LED Ring Light";
-                price = 35.00;
-            }
-            else if (product == 4) {
-                itemName = "Desktop Phone Stand";
-                price = 18.50;
-            }
-            else if (product == 5) {
-                itemName = "10,000mAh Power Bank";
-                price = 55.00;
-            }
-
             break;
 
-        case 2: // Fashion
+        case 2:
             cout << " ID | Item Description           | Price    \n";
             cout << "----|----------------------------|----------\n";
             cout << " 1  | Velvet Lip Tint            | RM12.00  \n";
@@ -105,44 +69,9 @@ int main() {
             cout << " 4  | Minimalist Crossbody       | RM28.00  \n";
             cout << " 5  | Corduroy Bucket Hat        | RM15.00  \n";
             cout << "==================================================\n";
-
-            while (true) {
-                cout << " Enter product ID to buy (1-5): ";
-                cin >> product;
-
-                if (cin.fail() || product < 1 || product > 5) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << " [ERROR] Invalid product ID. Please select a valid ID (1-5).\n";
-                } else {
-                    break;
-                }
-            }
-
-            if (product == 1) {
-                itemName = "Velvet Lip Tint";
-                price = 12.00;
-            }
-            else if (product == 2) {
-                itemName = "Oversized Hoodie";
-                price = 35.00;
-            }
-            else if (product == 3) {
-                itemName = "Cotton Graphic Tee";
-                price = 25.00;
-            }
-            else if (product == 4) {
-                itemName = "Minimalist Crossbody";
-                price = 28.00;
-            }
-            else if (product == 5) {
-                itemName = "Corduroy Bucket Hat";
-                price = 15.00;
-            }
-
             break;
 
-        case 3: // Food
+        case 3:
             cout << " ID | Item Description           | Price    \n";
             cout << "----|----------------------------|----------\n";
             cout << " 1  | Spicy Fire Ramen           | RM15.50  \n";
@@ -151,48 +80,64 @@ int main() {
             cout << " 4  | Dried Mango Pack           | RM10.50  \n";
             cout << " 5  | Instant Tteokbokki         | RM18.00  \n";
             cout << "==================================================\n";
-
-            while (true) {
-                cout << " Enter product ID to buy (1-5): ";
-                cin >> product;
-
-                if (cin.fail() || product < 1 || product > 5) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << " [ERROR] Invalid product ID. Please select a valid ID (1-5).\n";
-                } else {
-                    break;
-                }
-            }
-
-            if (product == 1) {
-                itemName = "Spicy Fire Ramen";
-                price = 15.50;
-            }
-            else if (product == 2) {
-                itemName = "Assorted Jelly Candy";
-                price = 8.00;
-            }
-            else if (product == 3) {
-                itemName = "DIY Boba Tea Kit";
-                price = 22.00;
-            }
-            else if (product == 4) {
-                itemName = "Dried Mango Pack";
-                price = 10.50;
-            }
-            else if (product == 5) {
-                itemName = "Instant Tteokbokki";
-                price = 18.00;
-            }
-
             break;
     }
 
-    cout << fixed << setprecision(2);
+    // Validate product selection
+    while (true) {
+        cout << " Enter product ID to buy (1-5): ";
+        cin >> product;
 
-    cout << "\n Selected Item: " << itemName
-         << " (RM" << price << ")\n";
+        if (cin.fail() || product < 1 || product > 5) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << " [ERROR] Invalid product ID. Please select a valid ID (1-5).\n";
+        } else {
+            break;
+        }
+    }
+
+    // Assign product name and price
+    if (category == 1) {
+        if (product == 1) { itemName = "Mechanical Keyboard"; price = 45.50; }
+        else if (product == 2) { itemName = "Wireless Earbuds"; price = 29.00; }
+        else if (product == 3) { itemName = "LED Ring Light"; price = 35.00; }
+        else if (product == 4) { itemName = "Desktop Phone Stand"; price = 18.50; }
+        else if (product == 5) { itemName = "10,000mAh Power Bank"; price = 55.00; }
+    }
+    else if (category == 2) {
+        if (product == 1) { itemName = "Velvet Lip Tint"; price = 12.00; }
+        else if (product == 2) { itemName = "Oversized Hoodie"; price = 35.00; }
+        else if (product == 3) { itemName = "Cotton Graphic Tee"; price = 25.00; }
+        else if (product == 4) { itemName = "Minimalist Crossbody"; price = 28.00; }
+        else if (product == 5) { itemName = "Corduroy Bucket Hat"; price = 15.00; }
+    }
+    else if (category == 3) {
+        if (product == 1) { itemName = "Spicy Fire Ramen"; price = 15.50; }
+        else if (product == 2) { itemName = "Assorted Jelly Candy"; price = 8.00; }
+        else if (product == 3) { itemName = "DIY Boba Tea Kit"; price = 22.00; }
+        else if (product == 4) { itemName = "Dried Mango Pack"; price = 10.50; }
+        else if (product == 5) { itemName = "Instant Tteokbokki"; price = 18.00; }
+    }
+
+    cout << fixed << setprecision(2);
+    cout << "\n Selected Item: " << itemName << " (RM" << price << ")\n";
+
+    // Validate quantity
+    while (true) {
+        cout << " Enter desired quantity: ";
+        cin >> quantity;
+
+        if (cin.fail() || quantity <= 0) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << " [ERROR] Quantity must be a positive integer (1 or more).\n";
+        } else {
+            break;
+        }
+    }
+
+    cout << "\n Quantity selected: " << quantity << "\n";
 
     return 0;
 }
